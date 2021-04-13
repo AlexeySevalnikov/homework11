@@ -2,14 +2,12 @@ package person.appearance.hair;
 
 public class LongHair extends Hair {
 
-    private final String color;
-
     public LongHair(final String color) {
-        this.color = color;
+        this.setColor(color);
     }
 
     @Override
     public final String toString() {
-        return "длинные, " + color;
+        return "длинные, " + getColor();
     }
 }

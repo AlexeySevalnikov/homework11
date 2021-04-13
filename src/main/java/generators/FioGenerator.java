@@ -25,16 +25,16 @@ public class FioGenerator {
         setMiddleNameFromFile(getDigitsSum(code % 100), sex);
     }
 
-    public final String getLastName() {
-        return lastName;
+    private FioGenerator getLastName() {
+        return this;
     }
 
-    public final String getFirstName() {
-        return firstName;
+    private FioGenerator getFirstName() {
+        return this;
     }
 
-    public final String getMiddleName() {
-        return middleName;
+    private FioGenerator getMiddleName() {
+        return this;
     }
 
     private void setLastNameFromFile(final int i, final String sex) {
@@ -47,6 +47,18 @@ public class FioGenerator {
 
     private void setMiddleNameFromFile(final int i, final String sex) {
         middleName = getLinesFromFile("middleNames_" + sex).get(i);
+    }
+
+    public final FioGenerator getFio() {
+        getLastName()
+                .getFirstName()
+                .getMiddleName();
+        return this;
+    }
+
+    @Override
+     public final String toString() {
+        return lastName + " " + firstName + " " + middleName;
     }
 }
 

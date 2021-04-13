@@ -18,9 +18,7 @@ public class InputProcessor {
 
             final FioGenerator fioGenerator = new FioGenerator();
             fioGenerator.generateParams(intCode);
-            final String lastName = fioGenerator.getLastName();
-            final String firstName = fioGenerator.getFirstName();
-            final String middleName = fioGenerator.getMiddleName();
+            fioGenerator.getFio().toString();
 
             final PhysGenerator physGenerator = new PhysGenerator();
             physGenerator.generateParams(intCode);
@@ -38,11 +36,13 @@ public class InputProcessor {
                 phone = phoneGenerator.buildResponse();
             }
 
-            result = new Person(input,
-                    lastName, firstName, middleName,
-                    physical,
-                    appearance,
-                    phone).toString();
+            result = new Person.Builder(input)
+                    .withFio(fioGenerator)
+                    .withPhys(physical)
+                    .withAppearance(appearance)
+                    .withPhone(phone)
+                    .build()
+                    .toString();
         } else {
             result = "Неверный ввод.";
         }

@@ -15,30 +15,32 @@ public class AppearanceGenerator implements Generator<Appearance> {
     private int hairLength;
     private String hairColor;
 
-    /**
+/**
      * Внешность генерируется по третьей цифре кода (i):
      * Глаза: по индексу i/2 (=0..4)
      * Длина волос: i
      * Цвет волос: из enum по индексу i-1 при i>0 (=0..8).
-     */
+*/
+
+
     @Override
     public final void generateParams(final int code) {
         final int i = code % 100 / 10;
         switch (i / 2) {
             case 0:
-                eyes = EyesColor.BLUE;
+                eyes = EyesColor.getInstance().getBlue();
                 break;
             case 1:
-                eyes = EyesColor.GREEN;
+                eyes = EyesColor.getInstance().getGreen();
                 break;
             case 2:
-                eyes = EyesColor.BROWN;
+                eyes = EyesColor.getInstance().getBrown();
                 break;
             case 3:
-                eyes = EyesColor.GRAY;
+                eyes = EyesColor.getInstance().getGray();
                 break;
             case 4:
-                eyes = EyesColor.DIFF;
+                eyes = EyesColor.getInstance().getDiff();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + i / 2);
@@ -72,4 +74,5 @@ public class AppearanceGenerator implements Generator<Appearance> {
         return new Appearance(eyes, hair);
     }
 }
+
 
